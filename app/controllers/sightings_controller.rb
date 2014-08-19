@@ -18,4 +18,21 @@ class SightingsController < ApplicationController
     end
   end
 
+  def edit
+    @kind = Kind.find(params[:kind_id])
+    @sighting = Sighting.find(params[:sighting_id])
+    render('sightings/edit.html.erb')
+  end
+
+  def update
+    @kind = Kind.find(params[:kind_id])
+    @sighting = Sighting.find(params[:sighting_id])
+    if @sighting.update(date: params[:date],
+                             latitude: params[:latitude],
+                             longitude: params[:longitude])
+      render('sightings/success.html.erb')
+    else
+      render('sightings/edit.html.erb')
+    end
+  end
 end
