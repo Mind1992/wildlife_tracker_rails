@@ -16,6 +16,11 @@
   <input id="sighting_latitude" name="latitude" type="float" value="<%= @sighting.latitude %>">
   <label for="sighting_longitude">Sighting longitude</label>
   <input id="sighting_longitude" name="longitude" type="float" value="<%= @sighting.longitude %>">
-
+  <label>Region</label>
+  <select name="region_id">
+    <% Region.all.each do |region| %>
+      <option value="<%= region.id %>"><%= region.name %></option>
+    <% end %>
+</select>
   <button>Add sighting</button>
 </form>

@@ -7,10 +7,12 @@ class SightingsController < ApplicationController
 
    def create
     kind = Kind.find(params[:kind_id])
+    @region = Region.new(name: params[:name])
     @sighting = Sighting.new(date: params[:date],
                              latitude: params[:latitude],
                              longitude: params[:longitude],
-                             kind_id: params[:kind_id])
+                             kind_id: params[:kind_id],
+                             region_id: params[:region_id])
     if @sighting.save
       render('sightings/success.html.erb')
     else

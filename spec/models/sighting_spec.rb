@@ -5,4 +5,5 @@ describe Sighting do
   it { should validate_presence_of :kind_id}
 
   it { should belong_to :kind}
+  it { should belong_to :region}
 end
