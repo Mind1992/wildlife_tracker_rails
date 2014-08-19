@@ -36,4 +36,10 @@ class KindsController < ApplicationController
       render('kinds/edit.html.erb')
     end
   end
+
+  def destroy
+    @kind = Kind.find(params[:id])
+    @kind.destroy
+    render('kinds/destroy.html.erb')
+  end
 end
