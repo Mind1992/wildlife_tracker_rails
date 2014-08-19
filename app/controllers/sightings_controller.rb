@@ -35,4 +35,11 @@ class SightingsController < ApplicationController
       render('sightings/edit.html.erb')
     end
   end
+
+  def destroy
+    @kind = Kind.find(params[:kind_id])
+    @sighting = Sighting.find(params[:sighting_id])
+    @sighting.destroy
+    render('sightings/destroy.html.erb')
+  end
 end
