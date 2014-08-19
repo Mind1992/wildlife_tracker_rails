@@ -5,6 +5,7 @@ class KindsController < ApplicationController
   end
 
   def new
+    @kind = Kind.new
     render('kinds/new.html.erb')
   end
 
@@ -14,8 +15,25 @@ class KindsController < ApplicationController
   end
 
   def create
-    @kind = Kind.create(params[:kind])
-    render('kinds/success.html.erb')
+    @kind = Kind.new(params[:kind])
+    if @kind.save
+      render('kinds/success.html.erb')
+    else
+      render('kinds/new.html.erb')
+    end
   end
 
+  def edit
+    @kind = Kind.find(params[:id])
+    render('kinds/edit.html.erb')
+  end
+
+  def update
+    @kind = Kind.find(params[:id])
+    if @kind.update(:name => params[:name])
+      render('kinds/success.html.erb')
+    else
+      render('kinds/edit.html.erb')
+    end
+  end
 end
