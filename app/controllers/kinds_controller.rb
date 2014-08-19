@@ -11,6 +11,8 @@ class KindsController < ApplicationController
 
   def show
     @kind = Kind.find(params[:id])
+    @sighting = Sighting.find(params[:id])
+    @region = Region.find(params[:region_id])
     render('kinds/show.html.erb')
   end
 

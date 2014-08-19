@@ -2,7 +2,7 @@
 
 <h2><%= @kind.name %></h2>
 <ul><% @kind.sightings.each do |sighting| %>
-  <li>Date: <%= sighting.date %>, Latitude: <%= sighting.latitude %>, Longitude <%= sighting.longitude %></li> <p><a href="/kinds/<%= @kind.id %>/sightings/<%= sighting.id %>/edit">Edit sighting</a><p><a href="/kinds/<%= @kind.id %>/sightings/<%= sighting.id %>"
+  <li>Date: <%= sighting.date %>, Latitude: <%= sighting.latitude %>, Longitude: <%= sighting.longitude %>, Region:<%= Region.find(@kind.sightings.last.region_id).name %></li> <p><a href="/kinds/<%= @kind.id %>/sightings/<%= sighting.id %>/edit">Edit sighting</a><p><a href="/kinds/<%= @kind.id %>/sightings/<%= sighting.id %>"
       data-confirm="You sure?"
       data-method="delete"
       rel="nofollow">Delete</a></p>

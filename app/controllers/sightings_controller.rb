@@ -5,9 +5,9 @@ class SightingsController < ApplicationController
     render('sightings/new.html.erb')
   end
 
-   def create
+  def create
     kind = Kind.find(params[:kind_id])
-    @region = Region.new(name: params[:name])
+    @region = Region.find(params[:region_id])
     @sighting = Sighting.new(date: params[:date],
                              latitude: params[:latitude],
                              longitude: params[:longitude],
