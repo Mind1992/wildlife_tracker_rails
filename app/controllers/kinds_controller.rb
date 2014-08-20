@@ -11,8 +11,12 @@ class KindsController < ApplicationController
 
   def show
     @kind = Kind.find(params[:id])
-    @sighting = Sighting.find(params[:id])
-    @region = Region.find(params[:region_id])
+    @sighting = Sighting.new(date: params[:date],
+                             latitude: params[:latitude],
+                             longitude: params[:longitude],
+                             kind_id: params[:kind_id],
+                             region_id: params[:region_id])
+    @region = Region.find(@kind.sightings.last.region_id)
     render('kinds/show.html.erb')
   end
 
