@@ -44,4 +44,17 @@ class SightingsController < ApplicationController
     @sighting.destroy
     render('sightings/destroy.html.erb')
   end
+
+  def index
+    @sightings = Sighting.all
+    render('sightings/index.html.erb')
+  end
+
+  def show
+    @start_date = params[:sightings][:start_date]
+    @end_date = params[:sightings][:end_date]
+    @sightings = Sighting.where(:date => params[:sightings][:start_date]..params[:sightings][:end_date])
+    render('sightings/show.html.erb')
+  end
+
 end

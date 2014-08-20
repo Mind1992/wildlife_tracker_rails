@@ -16,4 +16,6 @@ Rails.application.routes.draw do
 
   match('kinds/:kind_id/regions', {:via => :post, :to => 'regions#create'})
   match('kinds/:kind_id/regions/new', {:via => :get, :to => 'regions#new'})
+  match('sightings/index', {:via => :get, :to => 'sightings#index'})
+  match('sightings', {:via => :get, :to => 'sightings#show'})
 end
